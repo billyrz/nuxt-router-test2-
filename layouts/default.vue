@@ -7,21 +7,23 @@
       fixed
       app
     >
+ 
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
+          v-for="(cate, i) in categorys"
           :key="i"
-          :to="item.to"
+          :to="cate.link"
           router
           exact
         >
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+         
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title v-text="cate.name" />
           </v-list-item-content>
         </v-list-item>
+      
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
@@ -50,11 +52,7 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
+      
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -62,23 +60,8 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+
+  
     <v-footer
       :absolute="!fixed"
       app
@@ -97,6 +80,7 @@ export default {
       fixed: false,
       items: [
         {
+
           icon: 'mdi-apps',
           title: 'Welcome',
           to: '/'
@@ -117,6 +101,28 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+  computed:{
+      categorys:function(){
+        let cs=[]
+        for(let i=0;i<12;i++){
+            let first={}
+            first.name='cate '+i
+            first.link='cate-'+i
+            first.child=[]
+            for(let j=0;j<23;j++){
+              let second={}
+              second.name='cate2 '+j
+              second.link='cate2-'+j
+            first.child.push(second)
+            }
+        cs.push(first)
+        }
+        
+
+      return cs
+      },
+
   }
 }
 </script>
