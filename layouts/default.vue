@@ -109,13 +109,8 @@ export default {
             let first={}
             first.name='cate '+i
             first.link='cate-'+i
-            first.child=[]
-            for(let j=0;j<23;j++){
-              let second={}
-              second.name='cate2 '+j
-              second.link='cate2-'+j
-            first.child.push(second)
-            }
+         
+        
         cs.push(first)
         }
         

@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+import colors from 'vuetify/es5/util/colors';
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -39,21 +39,28 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
+          success: colors.green.accent3,
+        },
+      },
+    },
+
+    // Modules: https://go.nuxtjs.dev/config-modules
+    modules: ['@nuxtjs/axios'],
+
+    axios: {
+      // proxy: true
+    },
+    // Build Configuration: https://go.nuxtjs.dev/config-build
+    build: {},
   },
-
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxtjs/axios',
-  ],
-
-  axios: {
-    // proxy: true
+  loading: {
+    color: '#ff0000', // 进度条的颜色
+    failedColor: 'red', // 页面加载失败时的颜色（ 当 data 或 fetch 方法返回错误时）
+    height: '1px', // 进度条的高度(在进度条元素的 style 属性上体现)
+    throttle: 200, // 在 ms 中， 在显示进度条之前等待指定的时间。 用于防止条形闪烁
+    duration: 5000, // 进度条的最大显示时长， 单位毫秒。 Nuxt.js 假设页面在该时长内加载完毕
+    continuous: false, // 当加载时间超过duration时， 保持动画进度条
+    css: true, // 设置为 false 以删除默认进度条样式（ 并添加自己的样式）
+    rtl: false, // 从右到左设置进度条的方向
   },
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
-}
-
-}
+};
