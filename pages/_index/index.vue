@@ -24,9 +24,17 @@
         <v-card-title>
           这是一级目录 {{ this.$route.path }} 的子目录
         </v-card-title>
-        <v-cart-text> 
-        
-        
+        <v-cart-text>
+          <v-chip-group active-class="primary--text" column>
+            <v-chip
+              v-for="(tag, index) in items"
+              :key="index"
+              nuxt
+              :to="$route.path + '/' + tag.link"
+            >
+              {{ tag.name }}
+            </v-chip>
+          </v-chip-group>
         </v-cart-text>
       </v-card>
     </v-col>
@@ -47,12 +55,12 @@ export default {
     let items = [];
     for (let j = 0; j < 23; j++) {
       let second = {};
-      second.name = 'cate2 ' + j;
-      second.link = 'cate2-' + j;
+      second.name = 'item ' + j;
+      second.link = 'item-' + j;
       items.push(second);
     }
 
-    return items;
+    return { items: items };
   },
 
   created() {
